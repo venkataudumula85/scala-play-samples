@@ -16,8 +16,3 @@ lazy val root = (project in file("."))
   )
 rpmVendor := "typesafe"
 rpmLicense := Some("BSD")
-
-publishTo in Rpm := {
-    val nexus = "http://18.189.27.11:8081/"
-    Some("releases" at nexus + "repository/rpm-snapshot")
-}
