@@ -15,4 +15,4 @@ lazy val root = (project in file("."))
     )
   )
 rpmVendor := "typesafe"
-rpmlicense := Some("BSD")
+rpmLicense := Some("BSD")
