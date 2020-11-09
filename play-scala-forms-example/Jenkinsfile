@@ -15,7 +15,7 @@ pipeline {
  stage('Test') {
             steps {
                 echo "Testing..."
-                sh "/usr/local/bin/sbt test"
+                sh "cd play-scala-forms-example &&  sbt test"
             }
         }
         
