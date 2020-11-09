@@ -13,15 +13,9 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo "Testing..."
-                sh "sbt test"
-            }
-        }
-
         stage('Package') {
             steps {
+                
                 echo "Packaging..."
                 sh "sbt rpm:packageBin"
             }
