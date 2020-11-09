@@ -12,7 +12,13 @@ pipeline {
                 sh "cd play-scala-forms-example && sbt sbtVersion"
             }
         }
-
+ stage('Test') {
+            steps {
+                echo "Testing..."
+                sh "/usr/local/bin/sbt test"
+            }
+        }
+        
         stage('Package') {
             steps {
                 
