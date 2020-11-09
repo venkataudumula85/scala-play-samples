@@ -26,6 +26,5 @@ pipeline {
                 sh "sbt rpm:packageBin"
             }
         }
-
     }
 }
