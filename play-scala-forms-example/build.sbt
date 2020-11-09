@@ -14,5 +14,5 @@ lazy val root = (project in file("."))
       "-Xfatal-warnings"
     )
   )
-rpmvendor := "typesafe"
+rpmVendor := "typesafe"
 rpmlicense := Some("BSD")
