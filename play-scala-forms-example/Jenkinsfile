@@ -9,7 +9,7 @@ pipeline {
         stage('Compile') {
             steps {
                 echo "Compiling..."
-                sh "sbt sbtVersion"
+                sh "cd play-scala-forms-example && sbt sbtVersion"
             }
         }
 
@@ -17,7 +17,7 @@ pipeline {
             steps {
                 
                 echo "Packaging..."
-                sh "sbt rpm:packageBin"
+                sh "cd play-scala-forms-example && sbt rpm:packageBin"
             }
         }
     }
