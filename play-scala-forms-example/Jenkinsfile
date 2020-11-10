@@ -28,7 +28,7 @@ pipeline {
         }
          stage('Artifacts Upload') {
             steps {
-        nexusArtifactUploader artifacts: [[artifactId: 'rpm-snapshot', classifier: '', file: 'play-scala-forms-example-2.8.x-1.noarch.rpm', type: 'raw']], credentialsId: 'nexus-password', groupId: 'scala', nexusUrl: 'http://172.31.47.241:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'rpm-snapshot', version: '1.0.0'
+        nexusArtifactUploader artifacts: [[artifactId: 'rpm-snapshot', classifier: '', file: 'play-scala-forms-example/target/rpm/RPMS/noarch/play-scala-forms-example-2.8.x-1.noarch.rpm', type: 'raw']], credentialsId: 'nexus-password', groupId: 'scala', nexusUrl: 'http://172.31.47.241:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'rpm-snapshot', version: '1.0.0'
        }
         }
             }
