@@ -36,10 +36,16 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-               sh "cd play-scala-forms-example && docker build -t play-scala-forms-example:$VERSION ."
+               sh "cd play-scala-forms-example && docker build -t 172.31.47.241:8083/play-scala-forms-example:$VERSION ."
             }
         }
-        
+         stage('Docker Upload') {
+            steps {
+        withDockerRegistry(credentialsId: 'nexus-password', url: '172.31.47.241:8083/') {
+            sh "docker push 172.31.47.241:8083/play-scala-forms-example:$VERSION"
+}
+            }
+         }
             }
              
 }
