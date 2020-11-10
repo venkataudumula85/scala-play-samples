@@ -5,10 +5,10 @@ pipeline {
     agent any
     environment {
         VERSION="1.0.$BUILD_NUMBER"
-        WORKSPACE="$WORKSPACE/play-scala-forms-example"
+      
     }
     stages {
-
+       
         stage('Compile') {
             steps {
                 echo "Compiling..."
@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-               sh "cd play-scala-forms-example && docker build -t play-scala-forms-example:$VERSION"
+               sh "cd play-scala-forms-example && docker build -t play-scala-forms-example:$VERSION ."
             }
         }
         
