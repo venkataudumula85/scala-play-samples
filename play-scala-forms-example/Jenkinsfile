@@ -15,7 +15,7 @@ pipeline {
                 dir('play-scala-forms-example'){
                 echo "Compiling..."
                 sh "APP_SECRET_KEY=`sbt playGenerateSecret` && sed -i 's/APP_SECRET_KEY/${APP_SECRET_KEY}/g' conf/application.conf"
-                sh"cat conf/application.json"
+                sh "cat conf/application.json"
                 sh "sbt sbtVersion"
                 }
             }
