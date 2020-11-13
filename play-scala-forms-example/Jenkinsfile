@@ -4,7 +4,8 @@
 pipeline {
     agent any
     environment {
-        VERSION="1.0.$BUILD_NUMBER"
+        SHORT_COMMIT = "${GIT_COMMIT[0..7]}"   
+        VERSION="1.0.$SHORT_COMMIT"
       
     }
     stages {
