@@ -11,10 +11,14 @@ pipeline {
     stages {
        
         stage('Compile') {
-            steps {
+             steps {
                 dir('play-scala-forms-example'){
                 echo "Compiling..."
-                sh "export APP_SECRET_KEY=`sbt playGenerateSecret` && sed -i 's/APP_SECRET_KEY/${APP_SECRET_KEY}/g' conf/application.conf"
+                sh "sbt playGenerateSecret|tee KEY"
+                sh "cat KEY|grep -e secret | awk '{print \$4}'|tee KEY1"
+                sh """env.APP_SECRET_KEY="\$(cat KEY1)" && echo ${env.APP_SECRET_KEY}"""
+               sh "cat KEY1"
+                sh "sed -i s/APP_SECRET_KEY/${env.APP_SECRET_KEY}/g conf/application.conf"
                 sh "cat conf/application.json"
                 sh "sbt sbtVersion"
                 }
