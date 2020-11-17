@@ -1,4 +1,4 @@
-FROM 3.139.194.242:8083/ubi-minimal:8.1        
+FROM registry.redhat.io/ubi8/ubi-minimal/ubi-minimal:8.1        
 #install Openjdk      
 RUN microdnf install java-1.8.0-openjdk 
 #copy the rpm to opt                
