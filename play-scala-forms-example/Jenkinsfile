@@ -14,15 +14,12 @@ pipeline {
             steps {
                 dir('play-scala-forms-example'){
                 echo "Compiling..."
-                 sh "sbt sbtVersion"
-                sh "sbt playGenerateSecret|tee SECRET"
-                sh"cat SECRET"
-                sh"""cat SECRET|grep Generated |cut -d ":" -f2>SECRET && cat SECRET"""
-                
-                sh"cat conf/application.conf"
+                sh "sbt sbtVersion"
+                sh "sbt playGenerateSecret"
+                sh "sbt playUpdateSecret"
+       
                 }
-                
-            }
+                  }
         }
  stage('Test') {
             steps {
