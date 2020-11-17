@@ -15,6 +15,7 @@ pipeline {
                 dir('play-scala-forms-example'){
                 echo "Compiling..."
                 sh "sbt sbtVersion"
+               sh "sbt sonarScan"
                //sh "sbt playGenerateSecret"
                 sh "sbt playUpdateSecret"
        
