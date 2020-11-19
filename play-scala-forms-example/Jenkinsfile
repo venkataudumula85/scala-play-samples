@@ -10,11 +10,27 @@ pipeline {
       
     }
     stages {
-       
+       stage("ENV SETUP"){
+           steps{
+               script{
+                  if ("$GIT_BRANCH" == 'origin/master'){
+            SHORT_COMMIT = "${GIT_COMMIT[0..7]}"   
+            VERSION="release-1.0.$SHORT_COMMIT"
+            RPM_VERSION="release-1.0.$BUILD_NUMBER"
+        }
+        else{
+            SHORT_COMMIT = "${GIT_COMMIT[0..7]}"  
+            VERSION="snapshot-1.0.$SHORT_COMMIT"
+            RPM_VERSION="snapshot-1.0.$BUILD_NUMBER"
+        }
+          } }
+       }
         stage('Compile') {
             steps {
                 dir('play-scala-forms-example'){
                 echo "Compiling..."
+                echo "$VERSION"
+                echo  "$GIT_BRANCH"
                 sh "sbt sbtVersion"
               // sh "sbt sonarScan"
                //sh "sbt playGenerateSecret"
