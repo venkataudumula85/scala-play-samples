@@ -1,6 +1,6 @@
 /* uses sbt, which i installed with homebrew. */
 /* this works without requiring the 'sbt plugin'. */
-#!/bin/groovy
+/* #!/bin/groovy */
 
 pipeline {
     agent any
