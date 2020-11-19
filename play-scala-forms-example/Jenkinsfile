@@ -4,7 +4,7 @@
 
 pipeline {
     agent any
-    environment {
+        environment {
         if ("${GIT_BRANCH}" == 'master'){
             SHORT_COMMIT = "${GIT_COMMIT[0..7]}"   
             VERSION="release-1.0.$SHORT_COMMIT"
