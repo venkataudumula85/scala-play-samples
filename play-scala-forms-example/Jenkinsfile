@@ -4,8 +4,16 @@
 pipeline {
     agent any
     environment {
-        SHORT_COMMIT = "${GIT_COMMIT[0..7]}"   
-        VERSION="1.0.$SHORT_COMMIT"
+        if ("${GIT_BRANCH}" == 'master'){
+            SHORT_COMMIT = "${GIT_COMMIT[0..7]}"   
+            VERSION="release-1.0.$SHORT_COMMIT"
+            RPM_VERSION="release-1.0.${BUILD_NUMBER}"
+        }
+        if ("${GIT_BRANCH}" != 'master'){
+            SHORT_COMMIT = "${GIT_COMMIT[0..7]}"   
+            VERSION="snapshot-1.0.$SHORT_COMMIT"
+            RPM_VERSION="snapshot-1.0.${BUILD_NUMBER}"
+        }
         scannerHome = tool 'SonarScanner'
       
     }
