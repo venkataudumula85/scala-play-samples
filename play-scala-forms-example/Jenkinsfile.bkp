@@ -51,8 +51,11 @@ pipeline {
         }
  stage('Test') {
             steps {
+            dir('play-scala-forms-example'){
                 echo "Testing..."
-                sh "cd play-scala-forms-example &&  sbt test"
+                sh "sbt clean coverage test"
+                sh "sbt coverageReport"
+                }
             }
         }
         
