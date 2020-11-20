@@ -47,7 +47,7 @@ pipeline {
           echo "Testing..."
           sh "sbt clean coverage test"
           sh "sbt coverageReport"
-          sh "sbt sonarScan"
+          
         }
       }
     }
@@ -56,7 +56,7 @@ pipeline {
         dir('play-scala-forms-example') {
 
           withSonarQubeEnv('SonarQube') { // If you have configured more than one global server connection, you can specify its name
-            sh "${scannerHome}/bin/sonar-scanner -Dproject.settings=./sonar-scanner.properties"
+            sh "sbt sonarScan"
           }
         }
       }
