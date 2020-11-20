@@ -56,7 +56,7 @@ pipeline {
           echo "Testing..."
           sh "sbt clean coverage test"
           sh "sbt coverageReport"
-          sh "sbt sonarScan"
+          //sh "sbt sonarScan"
         }
       }
     }
