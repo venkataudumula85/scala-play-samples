@@ -57,7 +57,8 @@ pipeline {
         dir('play-scala-forms-example') {
 
           withSonarQubeEnv('SonarQube') { // If you have configured more than one global server connection, you can specify its name
-            sh "sbt sonarScan"
+            //sh "sbt sonarScan"
+            sh "${scannerHome}/bin/sonar-scanner -Dproject.settings=./sonar-project.properties"
           }
         }
       }
