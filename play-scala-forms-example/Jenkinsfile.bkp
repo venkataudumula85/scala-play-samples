@@ -14,15 +14,15 @@ pipeline {
     stage("ENV SETUP") {
       steps {
         script {
-          if ("release" in "${GIT_BRANCH}") {
+          if ( " in "${GIT_BRANCH}") {
             SHORT_COMMIT = "${GIT_COMMIT[0..7]}"
             VERSION = "1.0.$SHORT_COMMIT-release"
-            RPM_VERSION = "1.0.$BUILD_NUMBER-release"
+            BuildType = "release"
           }
           else {
             SHORT_COMMIT = "${GIT_COMMIT[0..7]}"
             VERSION = "1.0.$SHORT_COMMIT-snapshot"
-            RPM_VERSION = "1.0.$BUILD_NUMBER-snapshot"
+            BuildType = "snapshot"
           }
         }
       }
@@ -72,14 +72,14 @@ pipeline {
     }
     stage('Artifacts Upload') {
       steps {
-        nexusArtifactUploader artifacts: [[artifactId: 'rpm-snapshot', classifier: '', file: 'play-scala-forms-example/target/rpm/RPMS/noarch/play-scala-forms-example-*', type: 'rpm']],
+        nexusArtifactUploader artifacts: [[artifactId: 'rpm-snapshot', classifier: '', file: "play-scala-forms-example/target/rpm/RPMS/noarch/*.rpm", type: 'rpm']],
         credentialsId: 'nexus-password',
         groupId: 'scala',
         nexusUrl: '3.139.194.242:8081',
         nexusVersion: 'nexus3',
         protocol: 'http',
         repository: 'rpm-snapshot',
-        version: '1.0.0'
+        version: $BuildType
       }
     }
     stage('Docker Build') {
