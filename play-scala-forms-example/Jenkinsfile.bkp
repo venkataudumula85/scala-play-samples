@@ -14,7 +14,7 @@ pipeline {
     stage("ENV SETUP") {
       steps {
         script {
-          if ( " in "${GIT_BRANCH}") {
+          if ( "release" in "${GIT_BRANCH}") {
             SHORT_COMMIT = "${GIT_COMMIT[0..7]}"
             VERSION = "1.0.$SHORT_COMMIT-release"
             BuildType = "release"
