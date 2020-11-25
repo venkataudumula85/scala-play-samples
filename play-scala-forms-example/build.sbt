@@ -18,5 +18,6 @@ lazy val root = (project in file("."))
 //import sbtsonar.SonarPlugin.autoImport.sonarProperties
 //sonarProperties ++= Map(sonar.scoverage.reportPath="target/scala-2.13/scoverage-report/scoverage.xml")
 
+version := sys.env.get("VERSION")
 rpmVendor := "typesafe"
 rpmLicense := Some("BSD")
