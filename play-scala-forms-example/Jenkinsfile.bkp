@@ -81,7 +81,7 @@ pipeline {
         nexusVersion: 'nexus3',
         protocol: 'http',
         repository: 'rpm-snapshot',
-        version: "{$VERSION}"
+        version: "$VERSION"
       }
     }
     stage('Docker Build') {
