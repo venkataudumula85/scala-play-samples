@@ -14,7 +14,7 @@ pipeline {
     stage("ENV SETUP") {
       steps {
         script {
-          if ( "release" in "${GIT_BRANCH}") {
+          if ("${GIT_BRANCH}".contains("release")) {
             SHORT_COMMIT = "${GIT_COMMIT[0..7]}"
             VERSION = "1.0.$SHORT_COMMIT-release"
             RPM_VERSION = "1.0.$SHORT_COMMIT"
