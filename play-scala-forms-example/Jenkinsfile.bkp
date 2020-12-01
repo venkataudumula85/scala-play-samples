@@ -29,7 +29,7 @@ pipeline {
         }
       }
     }
-    stage('Compile') {
+    stage('Update Secret') {
       steps {
         dir('play-scala-forms-example') {
           echo "Compiling..."
