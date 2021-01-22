@@ -51,6 +51,7 @@ pipeline {
           sh "sbt clean coverage test"
           sh "sbt coverageReport"
           sh "sbt sonarScan"
+          sh "sonar-runner"
           
         }
       }
